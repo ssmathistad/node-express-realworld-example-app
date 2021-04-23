@@ -6,14 +6,13 @@ pipeline {
         checkout scm
       }
     }
-    stage('Building image') {
+    stage('Building Image') {
       steps {
         sh "docker build -t octumn/realworld_backend:v1.1.$BUILD_NUMBER ."
       }
     }
-    stage('Pushing image') {
+    stage('Pushing Image') {
       steps{
-        
         withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'usr', passwordVariable: 'pwd')]) {
             sh "docker login --username=usr --password=pwd"
             sh "docker push octumn/realworld_backend:v1.0.$BUILD_NUMBER"
