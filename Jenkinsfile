@@ -14,7 +14,7 @@ pipeline {
     stage('Pushing Image') {
       steps{
         withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'usr', passwordVariable: 'pwd')]) {
-            sh "docker login --username=usr --password=pwd"
+            sh "docker login --username=$usr --password='$pwd' docker.io"
             sh "docker push octumn/realworld_backend:v1.0.$BUILD_NUMBER"
         }
       }
