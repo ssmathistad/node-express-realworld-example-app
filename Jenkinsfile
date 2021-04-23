@@ -1,8 +1,4 @@
 pipeline {
-  environment {
-    registry = "octumn/realworld_backend"
-    registryCredential = 'dockerhub'
-  }
   agent any
   stages {
     stage('Cloning Git') {
